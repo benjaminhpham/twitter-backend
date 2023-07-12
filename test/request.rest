@@ -1,0 +1,21 @@
+GET http://localhost:8000/users 
+###
+
+POST http://localhost:8000/users 
+Content-Type: application/json
+
+{
+  "email": "derek123@gmail.com", 
+  "name": "derek123",
+  "username": "derek123"
+}
+###
+
+PUT http://localhost:8000/users/2
+Content-Type: application/json
+
+{
+  "email": "derek123@gmail.com", 
+  "name": "derek123",
+  "username": "derek123"
+}

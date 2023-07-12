@@ -4,7 +4,11 @@ import tweetRoutes from "./routes/tweetRoutes";
 
 const app = express();
 // parse all data to json
+// parse requests of content-type - application/json
 app.use(express.json());
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/users", userRoutes);
 app.use("/tweets", tweetRoutes);
 
