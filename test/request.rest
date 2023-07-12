@@ -1,6 +1,9 @@
 GET http://localhost:8000/users 
 ###
 
+GET http://localhost:8000/users/1
+###
+
 POST http://localhost:8000/users 
 Content-Type: application/json
 
@@ -11,11 +14,30 @@ Content-Type: application/json
 }
 ###
 
-PUT http://localhost:8000/users/2
+PUT http://localhost:8000/users/5
 Content-Type: application/json
 
 {
-  "email": "derek123@gmail.com", 
-  "name": "derek123",
-  "username": "derek123"
+  "bio": "john123", 
+  "name": "john123",
+  "image": "john123"
 }
+###
+
+GET http://localhost:8000/tweets 
+###
+
+GET http://localhost:8000/tweets/2
+###
+
+POST http://localhost:8000/tweets 
+Content-Type: application/json
+
+{
+  "content": "My third tweet", 
+  "userId": 1
+}
+###
+
+DELETE http://localhost:8000/tweets/1
+###
