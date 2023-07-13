@@ -1,13 +1,33 @@
 import { Router } from "express";
 import { PrismaClient } from "@prisma/client";
+import jwt from "jsonwebtoken";
 const router = Router();
 const prisma = new PrismaClient();
+const JWT_SECRET = "SUPER_SECRET";
 
 // create tweet
 router.post("/", async (req, res) => {
   const { content, image, userId } = req.body;
+  // Authentication
+  const authHeader = req.headers["authorization"];
+  const token = authHeader?.split(" ")[1];
+  if (!token) {
+    return res.sendStatus(401);
+  }
 
   try {
+    const payload = (await jwt.verify(token, JWT_SECRET)) as {
+      tokenId: number;
+    };
+    const dbToken = await prisma.token.findUnique({
+      where: { id: payload?.tokenId },
+      include: { user: true },
+    });
+
+    if (!dbToken?.valid || dbToken.expiration < new Date()) {
+      return res.status(401).json({ error: "API token expired" });
+    }
+
     const tweet = await prisma.tweet.create({
       data: {
         content,

@@ -1,3 +1,20 @@
+POST http://localhost:8000/auth/login 
+Content-Type: application/json
+
+{
+  "email": "ben123@gmail.com"
+}
+### 
+
+POST http://localhost:8000/auth/authenticate
+Content-Type: application/json
+
+{
+  "email": "ben123@gmail.com", 
+  "emailToken": "12972088"
+}
+###
+
 GET http://localhost:8000/users 
 ###
 
@@ -32,6 +49,7 @@ GET http://localhost:8000/tweets/2
 
 POST http://localhost:8000/tweets 
 Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbklkIjoxNX0.w0meAjJTwQPbZatntipVOVwi7dmLhqPy27wseYvfloU
 
 {
   "content": "My third tweet", 
@@ -41,3 +59,5 @@ Content-Type: application/json
 
 DELETE http://localhost:8000/tweets/1
 ###
+
+

@@ -1,6 +1,7 @@
 import express from "express";
 import userRoutes from "./routes/userRoutes";
 import tweetRoutes from "./routes/tweetRoutes";
+import authRoutes from "./routes/authRoutes";
 
 const app = express();
 // parse all data to json
@@ -11,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/users", userRoutes);
 app.use("/tweets", tweetRoutes);
+app.use("/auth", authRoutes);
 
 // app.METHOD(PATH, HANDLER)
 
